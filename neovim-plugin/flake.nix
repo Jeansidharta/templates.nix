@@ -1,10 +1,11 @@
 {
   inputs = {
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     utils.url = "github:numtide/flake-utils";
     neovim-flake = {
       url = "github:jeansidharta/neovim-flake";
     };
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
   outputs =
     {
@@ -32,6 +33,8 @@
           buildInputs = [
             nvim
             pkgs.lua-language-server
+            pkgs.stylua
+            pkgs.selene
           ];
         };
       }

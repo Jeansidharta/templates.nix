@@ -2,35 +2,26 @@
   inputs = {
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    naersk.url = "github:nix-community/naersk/master";
     utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
     {
-      self,
       nixpkgs,
       utils,
-      naersk,
+      ...
     }:
     utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        naersk-lib = pkgs.callPackage naersk { };
       in
       {
-        defaultPackage = naersk-lib.buildPackage ./.;
         devShell = pkgs.mkShell {
           buildInputs = [
-            pkgs.cargo
-            pkgs.rustc
-            pkgs.rustfmt
-            pkgs.pre-commit
-            pkgs.rust-analyzer
-            pkgs.rustPackages.clippy
+            pkgs.openscad-lsp
+            pkgs.openscad
           ];
-          RUST_SRC_PATH = pkgs.rustPlatform.rustLibSrc;
         };
       }
     );
