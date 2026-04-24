@@ -8,6 +8,10 @@
           description = "Generic zig template";
           path = ./zig;
         };
+        golang = {
+          description = "Generic golang template";
+          path = ./golang;
+        };
         rust = {
           description = "Generic rust template";
           path = ./rust;
