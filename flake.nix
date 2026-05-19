@@ -4,6 +4,10 @@
     { self }:
     {
       templates = {
+        python = {
+          description = "Generic python template";
+          path = ./python;
+        };
         zig = {
           description = "Generic zig template";
           path = ./zig;
